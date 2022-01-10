@@ -24,13 +24,25 @@ if __name__ == '__main__':
     # Lecture image et affichage
     #==============================================================================
     image = Image()
-    image.load(path_to_assets + 'test2.JPG')
+    image.load(path_to_assets + 'test7.JPG')
     image.display("Exemple d'image")
+    
+    image2 = Image()
+    image2.load(path_to_assets + 'test2.JPG')
+    image2.display("Exemple d'image")
 
+    image3 = Image()
+    image3.load(path_to_assets + 'test2.JPG')
+    image3.display("Exemple d'image")
+    
+    image4 = Image()
+    image4.load(path_to_assets + 'test8.JPG')
+    image4.display("Exemple d'image")
+    
     #==============================================================================
     # Binarisation de l'image et affichage
     #==============================================================================
-    S = 70
+    S = 100
     image_binarisee = image.binarisation(S)
     image_binarisee.display("Image binarisee")
 
@@ -43,12 +55,12 @@ if __name__ == '__main__':
     #==============================================================================
     # Redimensionnement de l'image et affichage
     #==============================================================================
-    image_resizee = image_localisee.resize(100, 500)
+    image_resizee = image_localisee.resize(300, 100)
     image_resizee.display("Image redimensionee")
 
     #==============================================================================
     # Lecture modeles et reconnaissance
     #==============================================================================
     liste_modeles = lecture_modeles(path_to_assets)
-    chiffre = reconnaissance_chiffre(image, liste_modeles, 70)
+    chiffre = reconnaissance_chiffre(image, liste_modeles, 5)
     print("Le chiffre reconnu est : ", chiffre)
