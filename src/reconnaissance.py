@@ -12,5 +12,17 @@ def lecture_modeles(chemin_dossier):
 
 
 def reconnaissance_chiffre(image, liste_modeles, S):
-    pass
+    im = image.binarisation(S) #On met en forme l'image qu'on veut reconnaitre
+    im = im.localisation()
+    nb_similitude = 0 #On initialise le nombre de similitudes maximum
+    entier_lpr = 0  #Entier le plus ressemblant à l'image dans la liste_modeles 
+    for i in range (len(liste_modeles)):  #On parcourt liste_modele
+        im = im.resize(liste_modeles[i].H,liste_modeles[i].W)
+        #On redimensonne l'image de façon à etre dans la même dimension que
+        #celle qu'on cherche dans la liste_modeles
+        if nb_similitude<im.similitude(liste_modeles[i]):
+            nb_similitude = im.similitude(liste_modeles[i])
+            entier_lpr = i
+    return entier_lpr    #Ca retourne l'entier reconnu
+            
 
